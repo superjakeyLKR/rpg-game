@@ -4,8 +4,7 @@ creatureStats = {
         "hp": 5,
         "att": 1,
         "desc": "[color=white]This is the fish king. Not much else to say."
-    },
-    "player": "[color=#ba8c63]0xE000[color=playerColor]@"
+    }
 }
 
 #region Bad Code Wall
