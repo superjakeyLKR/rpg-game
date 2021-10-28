@@ -57,4 +57,9 @@ pauirtgdyText = ["When you wake up, you are in, what seems to be, a royal palace
                 "[color=light orange]HoW aBoUt ThIs? We FiGhT, aNd If YoU wIn, YoU gO fReE.",
                 "[color=playerColor]\"What happens if you win?\"", "[color=light orange]YoU dIe.",
                 "[color=playerColor]\"Oh... Ok then... Let's do it!\""]
+royalFightText = ["[color=light orange]WhAt iS yOuR pReFeRrEd WeApOn? We HaVe:",
+                 "A sword (Warrior Class),",
+                 "A wand (Mage Class)",
+                 "A bow (Ranger Class)",
+                 "A... Frying Pan? (Imma be honest I have no idea why this is an option)"] 
 #endregion

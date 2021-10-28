@@ -19,7 +19,15 @@ def LoadGame(): #Loads a saved game. (NOT IMPLEMENTED YET)
     terminal.printf(0, 1, " " * 4)
     Start()
 
-def DoCombat(playerName, creatureName):
+def ChooseWeapon(name):
+    royalFightText = StoryTextandCreatureStats.royalFightText
+    i = 1
+    while i <= len(royalFightText):
+        terminal.printf(0, i, royalFightText[i - 1])
+        slp(0.5)
+        i += 1
+
+def DoCombat(playerName, creatureName): #Handles the combat system. (NOT FULLY IMPLEMENTED YET)
     enemy = StoryTextandCreatureStats.creatureStats[creatureName]
     terminal.clear()
     terminal.printf(0, 0, enemy["icon"])
@@ -31,7 +39,7 @@ def Start(): #The stuff that happenes at the start of the game.
     name = " "
     terminal.open()
     terminal.set("window: title = 'Enter your name.', size = 80x30; palette.playerColor = #c2ffff")
-    terminal.setf("0xE000: woodenSword.png, align=center, size=12; 0xE001: ironSword.png, align=center")
+    terminal.setf("0xE000: woodenSword.png, align=center; 0xE001: ironSword.png, align=center")
     terminal.printf(0, 0, "Enter name: ")
     terminal.color(terminal.color_from_name("playerColor"))
     terminal.refresh()
