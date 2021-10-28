@@ -31,7 +31,7 @@ def Start(): #The stuff that happenes at the start of the game.
     name = " "
     terminal.open()
     terminal.set("window: title = 'Enter your name.', size = 80x30; palette.playerColor = #c2ffff")
-    terminal.setf("0xE000: woodenSword.png, align=center; 0xE001: ironSword.png, align=center")
+    terminal.setf("0xE000: woodenSword.png, align=center, size=12; 0xE001: ironSword.png, align=center")
     terminal.printf(0, 0, "Enter name: ")
     terminal.color(terminal.color_from_name("playerColor"))
     terminal.refresh()
