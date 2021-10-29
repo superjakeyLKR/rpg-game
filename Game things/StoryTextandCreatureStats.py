@@ -1,6 +1,6 @@
 creatureStats = {
     "fishKing": {
-        "icon": "[color=light orange]u[+]n[+][color=yellow]^[0xE001]",
+        "icon": "[color=light orange]u[+]n[+][color=yellow]^[0xE004]",
         "hp": 5,
         "att": 1,
         "desc": "[color=white]This is the fish king. Not much else to say."
@@ -59,7 +59,6 @@ pauirtgdyText = ["When you wake up, you are in, what seems to be, a royal palace
                 "[color=playerColor]\"Oh... Ok then... Let's do it!\""]
 royalFightText = ["[color=light orange]WhAt iS yOuR pReFeRrEd WeApOn? We HaVe:",
                  "A sword (Warrior Class),",
-                 "A wand (Mage Class)",
-                 "A bow (Ranger Class)",
-                 "A... Frying Pan? (Imma be honest I have no idea why this is an option)"] 
+                 "A wand (Mage Class),",
+                 "Or a bow (Ranger Class)."] 
 #endregion

@@ -20,12 +20,27 @@ def LoadGame(): #Loads a saved game. (NOT IMPLEMENTED YET)
     Start()
 
 def ChooseWeapon(name):
-    royalFightText = StoryTextandCreatureStats.royalFightText
-    i = 1
-    while i <= len(royalFightText):
-        terminal.printf(0, i, royalFightText[i - 1])
-        slp(0.5)
-        i += 1
+    name = name
+    weapon = ""
+    i = 0
+    textLength = len(StoryTextandCreatureStats.royalFightText) + 1
+
+    finishedWeapon = False
+    while not finishedWeapon:
+        key = terminal.read()
+        if key != terminal.TK_RETURN:
+            weapon += chr(key + 93)
+            terminal.put(i, textLength, chr(key + 93))
+            terminal.refresh()
+            i += 1
+        else:
+            weapon = weapon.lower()
+            finishedWeapon = True
+    if weapon != "sword" or weapon != "wand" or weapon != "bow":
+        ChooseWeapon(name)
+    else:
+        terminal.printf(0, textLength + 1, "So, you have chosen {}")
+    DoCombat(name, "fishKing")
 
 def DoCombat(playerName, creatureName): #Handles the combat system. (NOT FULLY IMPLEMENTED YET)
     enemy = StoryTextandCreatureStats.creatureStats[creatureName]
@@ -39,12 +54,14 @@ def Start(): #The stuff that happenes at the start of the game.
     name = " "
     terminal.open()
     terminal.set("window: title = 'Enter your name.', size = 80x30; palette.playerColor = #c2ffff")
-    terminal.setf("0xE000: woodenSword.png, align=center; 0xE001: ironSword.png, align=center")
+    terminal.setf("0xE000: _woodenSword.png, align=center; 0xE001: _woodenWand.png, align=center; 0xE002: _woodenBowRight.png, align=center" +
+    "0xE003: _woodenBowLeft.png, align=center; 0xE004: _ironSword.png, align=center; ")
     terminal.printf(0, 0, "Enter name: ")
     terminal.color(terminal.color_from_name("playerColor"))
     terminal.refresh()
 
-    while True: #Gets the name of the player
+    finishedName = False
+    while not finishedName: #Gets the name of the player
         key = terminal.read()
         if key != terminal.TK_RETURN:
             name += chr(key + 93)
@@ -53,7 +70,7 @@ def Start(): #The stuff that happenes at the start of the game.
             terminal.refresh()
         else:
             name = name.title()
-            break
+            finishedName = True
 
     if name == " Load":
         LoadGame()
@@ -63,7 +80,8 @@ def Start(): #The stuff that happenes at the start of the game.
         FormatTheText(" Test")
         ChapterOne(" Test") 
     elif name == " Cmbt":
-        DoCombat(" Test", "fishKing")
+        ChooseWeapon(" Test")
+
     FormatTheText(name)
     terminal.set("window.title = The Backstory.")
     terminal.color(terminal.color_from_name("white"))
@@ -100,6 +118,7 @@ def ChapterOne(name):
     startText = StoryTextandCreatureStats.startText
     kidnappedText = StoryTextandCreatureStats.kidnappedText
     pauirtgdyText = StoryTextandCreatureStats.pauirtgdyText
+    royalFightText = StoryTextandCreatureStats.royalFightText
 
     while i <= len(startText):
         terminal.printf(0, i, startText[i - 1])
@@ -134,7 +153,13 @@ def ChapterOne(name):
     terminal.clear()
     terminal.printf(0, 0, "[bkcolor=blue]Chapter 1.3: A Royal Fight.[/bkcolor]")
     terminal.set("window.title = Chapter 1.3: A Royal Fight.")
-    slp(2)
+    slp(2)   
+    i = 1
+    while i <= len(royalFightText):
+        terminal.printf(0, i, royalFightText[i - 1])
+        slp(0.5)
+        i += 1
+    ChooseWeapon(name)
     terminal.close()
 
 
