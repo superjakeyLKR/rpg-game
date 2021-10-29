@@ -39,7 +39,7 @@ def ChooseWeapon(name):
     if weapon != "sword" or weapon != "wand" or weapon != "bow":
         ChooseWeapon(name)
     else:
-        terminal.printf(0, textLength + 1, "So, you have chosen {}")
+        terminal.printf(0, textLength + 1, "So, YoU hAvE cHoSeN tHe {}".format(weapon))
     DoCombat(name, "fishKing")
 
 def DoCombat(playerName, creatureName): #Handles the combat system. (NOT FULLY IMPLEMENTED YET)
