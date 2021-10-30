@@ -62,3 +62,21 @@ royalFightText = ["[color=light orange]WhAt iS yOuR pReFeRrEd WeApOn? We HaVe:",
                  "A wand (Mage Class),",
                  "Or a bow (Ranger Class)."] 
 #endregion
+
+def FishiliseText(startOnCapital = False, text = "DefaultText"):
+    i = 0
+    newWord = ""
+    while i < len(text):
+        if startOnCapital:
+            if i % 2 == 0:
+                newWord += text[i].upper()
+            else:
+                newWord += text[i].lower()
+        else:
+            if i % 2 != 0:
+                newWord += text[i].upper()
+            else:
+                newWord += text[i].lower()
+        i += 1
+
+    return newWord

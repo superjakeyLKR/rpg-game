@@ -1,11 +1,11 @@
 from bearlibterminal import terminal
 from time import sleep as s
-import StoryTextandCreatureStats
+import data
 
 def FormatTheText(playerName): #Adds the player name (when needed) to the string arrays held in the ther script
-    StoryTextandCreatureStats.startText[3] = StoryTextandCreatureStats.startText[3].format(playerName)
-    StoryTextandCreatureStats.pauirtgdyText[19] = StoryTextandCreatureStats.pauirtgdyText[19].format(playerName) 
-    StoryTextandCreatureStats.pauirtgdyText[20] = StoryTextandCreatureStats.pauirtgdyText[20].format(playerName) 
+    data.startText[3] = data.startText[3].format(playerName)
+    data.pauirtgdyText[19] = data.pauirtgdyText[19].format(playerName) 
+    data.pauirtgdyText[20] = data.pauirtgdyText[20].format(playerName) 
 
 def slp(sleepTime): #Time.sleep()s for a specific amount of time (parameter "sleepTime"), then refreshes the terminal.
     terminal.refresh()
@@ -23,7 +23,8 @@ def ChooseWeapon(name):
     name = name
     weapon = ""
     i = 0
-    textLength = len(StoryTextandCreatureStats.royalFightText) + 1
+    textLength = len(data.royalFightText) + 1
+    terminal.color(terminal.color_from_name("playerColor"))
 
     finishedWeapon = False
     while not finishedWeapon:
@@ -36,14 +37,15 @@ def ChooseWeapon(name):
         else:
             weapon = weapon.lower()
             finishedWeapon = True
-    if weapon != "sword" or weapon != "wand" or weapon != "bow":
+    if weapon != "sword" and weapon != "wand" and weapon != "bow":
         ChooseWeapon(name)
     else:
-        terminal.printf(0, textLength + 1, "So, YoU hAvE cHoSeN tHe {}".format(weapon))
+        terminal.printf(0, textLength + 1, "[color=light orange]So, YoU hAvE cHoSeN tHe {}".format(data.FishiliseText(False, weapon)))
+        slp(1)
     DoCombat(name, "fishKing")
 
 def DoCombat(playerName, creatureName): #Handles the combat system. (NOT FULLY IMPLEMENTED YET)
-    enemy = StoryTextandCreatureStats.creatureStats[creatureName]
+    enemy = data.creatureStats[creatureName]
     terminal.clear()
     terminal.printf(0, 0, enemy["icon"])
     terminal.printf(10, 0, "[0xE000][color=playerColor]@")
@@ -89,7 +91,7 @@ def Start(): #The stuff that happenes at the start of the game.
     terminal.printf(0, 1, " " * len(name))
     slp(1)
 
-    backstory = StoryTextandCreatureStats.backstory
+    backstory = data.backstory
     i = 1
     while i <= len(backstory): #Prints the backstory
         terminal.printf(0, i, backstory[i - 1])
@@ -115,14 +117,14 @@ def ChapterOne(name):
     i = 1
     terminal.set("window: title = Chapter 1: The Start.")
 
-    startText = StoryTextandCreatureStats.startText
-    kidnappedText = StoryTextandCreatureStats.kidnappedText
-    pauirtgdyText = StoryTextandCreatureStats.pauirtgdyText
-    royalFightText = StoryTextandCreatureStats.royalFightText
+    startText = data.startText
+    kidnappedText = data.kidnappedText
+    pauirtgdyText = data.pauirtgdyText
+    royalFightText = data.royalFightText
 
     while i <= len(startText):
         terminal.printf(0, i, startText[i - 1])
-        slp(0.5)
+        slp(0.1)
         i += 1
     
     terminal.clear()
@@ -133,7 +135,7 @@ def ChapterOne(name):
     terminal.color(terminal.color_from_name("playerColor"))
     while i <= len(kidnappedText):
         terminal.printf(0, i, kidnappedText[i - 1])
-        slp(0.5)
+        slp(0.1)
         i += 1
     slp(1)
     terminal.color(terminal.color_from_name("white"))
@@ -144,7 +146,7 @@ def ChapterOne(name):
     i = 1
     while i <= len(pauirtgdyText):
         terminal.printf(0, i, pauirtgdyText[i - 1])
-        slp(1)
+        slp(0.1)
         if i == 3:
             terminal.set("window.title = YOU WILL PAY.")
         elif i == 11:
@@ -157,7 +159,7 @@ def ChapterOne(name):
     i = 1
     while i <= len(royalFightText):
         terminal.printf(0, i, royalFightText[i - 1])
-        slp(0.5)
+        slp(0.1)
         i += 1
     ChooseWeapon(name)
     terminal.close()
