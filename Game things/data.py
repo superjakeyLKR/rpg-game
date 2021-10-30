@@ -66,6 +66,7 @@ royalFightText = ["[color=light orange]WhAt iS yOuR pReFeRrEd WeApOn? We HaVe:",
 def FishiliseText(startOnCapital = False, text = "DefaultText"):
     i = 0
     newWord = ""
+
     while i < len(text):
         if startOnCapital:
             if i % 2 == 0:
@@ -78,5 +79,5 @@ def FishiliseText(startOnCapital = False, text = "DefaultText"):
             else:
                 newWord += text[i].lower()
         i += 1
-
+    
     return newWord

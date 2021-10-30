@@ -40,7 +40,7 @@ def ChooseWeapon(name):
     if weapon != "sword" and weapon != "wand" and weapon != "bow":
         ChooseWeapon(name)
     else:
-        terminal.printf(0, textLength + 1, "[color=light orange]So, YoU hAvE cHoSeN tHe {}".format(data.FishiliseText(False, weapon)))
+        terminal.printf(0, textLength + 1, "[color=light orange]So, YoU hAvE cHoSeN tHe {}".format(data.FishiliseText(False, weapon + ", huh?")))
         slp(1)
     DoCombat(name, "fishKing")
 
